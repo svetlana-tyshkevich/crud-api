@@ -1,5 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { getResponse } from './getResponse.js';
+import { postResponse } from './postResponse';
+import { getByIdResponse } from './getByIdResponse';
 
 const requestListener = (
   req: IncomingMessage,
@@ -10,14 +12,18 @@ const requestListener = (
     jsonString += data;
   });
 
-  const urlString = req.url;
-  const pathParts = urlString ? urlString.split('/') : [];
+  const { url, method } = req;
+  const pathParts = url ? url.split('/') : [];
+  const id = pathParts[2];
 
-  console.log(pathParts);
-  const { method } = req;
   switch (method) {
     case 'GET':
-      getResponse(res);
+      if (!id) getResponse(res);
+      else getByIdResponse(res, id);
+      break;
+
+    case 'POST':
+      if (!id) req.on('end', () => postResponse(res, JSON.parse(jsonString)));
       break;
   }
 };
