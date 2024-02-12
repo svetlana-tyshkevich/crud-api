@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { getResponse } from './getResponse.js';
+import { getResponse } from './getResponse';
 import { postResponse } from './postResponse';
 import { getByIdResponse } from './getByIdResponse';
 import { putResponse } from './putResponse';

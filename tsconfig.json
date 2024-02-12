@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
+    "target": "es2022",
+    "module": "node16",
     "allowJs": false,
     "outDir": "./build",
     "rootDir": "./src",
@@ -14,7 +14,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -22,15 +22,22 @@
     "removeComments": true,
     "forceConsistentCasingInFileNames": true
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "exclude": [
     "node_modules/",
+    "dist",
+    "test"
   ],
   "include": [
-    "./src/**/*"
+    "./**/*"
   ],
   "typedocOptions": {
-    "entryPoints": ["src/index.ts"],
+    "entryPoints": ["./src/app.ts"],
     "out": "docs",
-    "readme": "none",
+    "readme": "none"
   }
 }

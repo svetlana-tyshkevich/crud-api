@@ -7,3 +7,5 @@ const server = http.createServer((req, res) => requestListener(req, res));
 server.listen(port, () => {
   console.log(`Server running at port ${port}`);
 });
+
+export { server };

@@ -1,5 +1,5 @@
 import { ServerResponse, IncomingMessage } from 'http';
-import { db } from '../db.js';
+import { db } from '../db';
 
 const getByIdResponse = (
   res: ServerResponse<IncomingMessage> & { req: IncomingMessage },
